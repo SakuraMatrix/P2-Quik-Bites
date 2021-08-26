@@ -8,15 +8,14 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class DriverService {
-    //Check this var
-    private DriverRepository driverRepo;
+    //Check this var because the Bean dependency for service failed
+    private final DriverRepository driverRepo;
 
     public DriverService(DriverRepository driverRepo){this.driverRepo = driverRepo;}
 
+    public Flux<Driver> getAll(){return driverRepo.findAll();}
 
-    public Flux<Driver> getAll(){return driverRepo.getAll();}
+    public Mono<Driver> get(int id){return driverRepo.findById(id);}
 
-    public Mono<Driver> get(int id){return driverRepo.get(id);}
-
-    public Driver create(Driver driver){return driverRepo.create(driver);}
+    public Mono<Driver> create(Driver driver){return driverRepo.save(driver);}
 }

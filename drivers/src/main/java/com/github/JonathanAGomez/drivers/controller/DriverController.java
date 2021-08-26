@@ -20,5 +20,5 @@ public class DriverController {
     public Mono<Driver> get(@PathVariable("id") int id){return driverService.get(id);}
 
     @PostMapping("")
-    public Driver create(@RequestBody Driver driver){return driverService.create(driver);}
+    public Mono<Driver> create(@RequestBody Driver driver){return driverService.create(driver);}
 }
