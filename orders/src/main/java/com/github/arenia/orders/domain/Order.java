@@ -1,7 +1,12 @@
 package com.github.arenia.orders.domain;
 
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
+
+@Table("orders")
 public class Order {
     
+    @PrimaryKey
     private int orderId;
     private int customerId;
     private int driverId;
@@ -24,6 +29,10 @@ public class Order {
         this.resturantId = resturantId;
         this.total = total;
         this.orderStatus = orderStatus;
+    }
+
+    public Order(){
+        
     }
 
     /**

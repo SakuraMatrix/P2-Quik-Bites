@@ -1,20 +1,38 @@
 package com.github.arenia.orders.controller;
 
-import java.util.concurrent.atomic.AtomicLong;
+import com.github.arenia.orders.domain.Order;
+import com.github.arenia.orders.service.OrderService;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.arenia.orders.domain.Order;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/orders")
 public class OrderController {
-  private final AtomicLong counter = new AtomicLong();
+  private final OrderService orderService;
   
+  public OrderController(OrderService service){this.orderService = service;}
 
-  @GetMapping("/order")
-  public Order orders(@RequestParam(value="total", defaultValue = "0") String total) {
-    return new Order((int)counter.getAndIncrement(), 0, 0, 0, Double.parseDouble(total), "started");
-  }
+    @GetMapping("")
+    public Flux<Order> getAll(){return orderService.getAll();}
+
+    @GetMapping("/error")
+    public String getError(){return orderService.printData();}
+
+    @GetMapping("/{id}")
+    public Mono<Order> get(@PathVariable("id") int id){return orderService.get(id);}
+
+    @PostMapping("")
+    public Mono<Order> create(@RequestBody Order order){return orderService.create(order);}
+
+    @DeleteMapping("/delete/{id}")
+    public Mono<Void> delete(@PathVariable("id") Integer id){return orderService.delete(id);}
 }
