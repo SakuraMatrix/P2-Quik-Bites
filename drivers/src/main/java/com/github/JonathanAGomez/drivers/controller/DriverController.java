@@ -24,4 +24,7 @@ public class DriverController {
 
     @PostMapping("")
     public Mono<Driver> create(@RequestBody Driver driver){return driverService.create(driver);}
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@RequestBody Driver driver){driverService.delete(driver);}
 }

@@ -19,5 +19,7 @@ public class DriverService {
 
     public Mono<Driver> create(Driver driver){return driverRepo.save(driver);}
 
+    public void delete(Driver driver){ driverRepo.delete(driver);}
+
     public String printData(){return "This is an error message";}
 }

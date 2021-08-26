@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 
 @Configuration
 @ComponentScan
+
 public class AppConfig {
     @Autowired
     DriverService driverService;
