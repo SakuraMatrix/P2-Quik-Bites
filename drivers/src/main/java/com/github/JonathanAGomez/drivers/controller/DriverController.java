@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(value ="/drivers")
+@RequestMapping(value ="/driver")
 public class DriverController {
     private final DriverService driverService;
 
@@ -15,6 +15,9 @@ public class DriverController {
 
     @GetMapping("")
     public Flux<Driver> getAll(){return driverService.getAll();}
+
+    @GetMapping("/error")
+    public String getError(){return driverService.printData();}
 
     @GetMapping("/{id}")
     public Mono<Driver> get(@PathVariable("id") int id){return driverService.get(id);}

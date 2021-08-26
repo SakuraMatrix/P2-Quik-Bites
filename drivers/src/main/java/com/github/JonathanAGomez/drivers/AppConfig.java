@@ -30,45 +30,4 @@ public class AppConfig {
         ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(handler);
         return HttpServer.create().port(8080).handle(adapter);
     }
-
-    //@Bean
-    //public DisposableServer server() throws URISyntaxException {
-    //    Path error = Paths.get(DriversApplication.class.getResource("/error.html").toURI());
-    //    Path index = Paths.get(DriversApplication.class.getResource("/index.html").toURI());
-    //    return HttpServer.create()
-    //            .port(8080)
-    //            .route(routes ->
-    //                    routes.get("/CustomerFormEntry", (request, response) ->
-    //                            response.send(driverService.getAll()
-    //                                    .map(DriversApplication::toByteBuf)
-    //                                    .log("http-server")))
-    //                            //Posts
-    //                            .post("/CustomerFormEntry/add", (request, response) ->
-    //                                    response.send(request.receive()
-    //                                            .asString()
-    //                                            .map(DriversApplication::parseCustomer)
-    //                                            .map(driverService::create)
-    //                                            .map(DriversApplication::toByteBuf)
-    //                                            .log("http-server")))
-//
-    //                            //Gets
-//
-    //                            .get("/CustomerFormEntry/{param}", (request,response) ->
-    //                                    response.send(driverService.get(Integer.parseInt(request.param("param")))
-    //                                            .map(DriversApplication::toByteBuf)
-    //                                            .log("http-server")))
-//
-    //                            .get("/CustomerFormEntry/{param}", (request,response) ->
-    //                                    response.sendString(Mono.just(request.param("param"))
-    //                                            .log("http-server")))
-//
-//
-    //                            .get("/", (request, response) ->
-    //                                    response.sendFile(index))
-    //                            .get("/error", (request, response) ->
-    //                                    response.status(404).addHeader("Output", "Error")
-    //                                            .sendFile(error))
-    //            )
-    //            .bindNow();
-    //}
 }

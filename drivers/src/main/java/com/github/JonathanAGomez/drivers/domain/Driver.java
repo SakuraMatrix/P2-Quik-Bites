@@ -1,9 +1,14 @@
 package com.github.JonathanAGomez.drivers.domain;
 
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
+
+@Table("driverstable")
 public class Driver {
 
-    private int id;
-    private String name;
+    @PrimaryKey
+    private int driver_id;
+    private String driver_name;
     //private double latitude;
     //private double longitude;
 
@@ -12,15 +17,15 @@ public class Driver {
     }
 
     public Driver(int id, String name){
-        this.id = id;
-        this.name = name;
+        this.driver_id = id;
+        this.driver_name = name;
     }
 
-    public int getId(){return id;}
-    public void setId(int id){this.id = id;}
+    public int getDriver_id(){return driver_id;}
+    public void setDriver_id(int driver_id){this.driver_id = driver_id;}
 
-    public String getName(){return name;}
-    public void setName(String name){this.name = name;}
+    public String getDriver_name(){return driver_name;}
+    public void setDriver_name(String driver_name){this.driver_name = driver_name;}
 
     //public double getLatitude(){return this.latitude;}
     //public void setLatitude(double latitude){this.latitude = latitude;}

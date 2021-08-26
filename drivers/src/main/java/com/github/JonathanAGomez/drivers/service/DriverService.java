@@ -18,4 +18,6 @@ public class DriverService {
     public Mono<Driver> get(int id){return driverRepo.findById(id);}
 
     public Mono<Driver> create(Driver driver){return driverRepo.save(driver);}
+
+    public String printData(){return "This is an error message";}
 }

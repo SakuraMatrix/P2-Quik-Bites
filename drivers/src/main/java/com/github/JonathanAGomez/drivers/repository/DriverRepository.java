@@ -23,12 +23,12 @@ public interface DriverRepository extends ReactiveCassandraRepository<Driver, In
     //}
 //
     //public Mono<Driver> get(String id){
-    //    return Mono.from(session.executeReactive("SELECT * FROM quikbutes.drivers WHERE id = " +id))
+    //    return Mono.from(session.executeReactive("SELECT * FROM quikbites.drivers WHERE id = " +id))
     //            .map(row -> new Driver(row.getInt("id"), row.getString("name")));
     //}
 //
     //public Mono<Driver> get(int id){
-    //    return Mono.from(session.executeReactive("SELECT * FROM quikbutes.drivers WHERE id = " +id))
+    //    return Mono.from(session.executeReactive("SELECT * FROM quikbites.drivers WHERE id = " +id))
     //            .map(row -> new Driver(row.getInt("id"), row.getString("name")));
     //}
 //

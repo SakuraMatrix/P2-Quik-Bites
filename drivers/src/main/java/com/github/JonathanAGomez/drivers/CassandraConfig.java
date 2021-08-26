@@ -13,9 +13,10 @@ import java.util.List;
 @Configuration
 @EnableReactiveCassandraRepositories
 public class CassandraConfig extends AbstractReactiveCassandraConfiguration {
+    String keyspace = "drivers";
     @Override
     protected String getKeyspaceName() {
-        return "drivers";
+        return keyspace;
     }
 
     @Override
@@ -30,7 +31,7 @@ public class CassandraConfig extends AbstractReactiveCassandraConfiguration {
 
     @Override
     protected List<CreateKeyspaceSpecification> getKeyspaceCreations() {
-        CreateKeyspaceSpecification specification = CreateKeyspaceSpecification.createKeyspace("drivers")
+        CreateKeyspaceSpecification specification = CreateKeyspaceSpecification.createKeyspace(keyspace)
                 .ifNotExists()
                 .with(KeyspaceOption.DURABLE_WRITES, true);
         return Arrays.asList(specification);
