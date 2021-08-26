@@ -21,7 +21,6 @@ public class DriverService {
 
     public Mono<Driver> create(Driver driver){return driverRepo.save(driver);}
 
-    //Delete builds the cql statement, but my syntax is off. figure out what makes it work
     public Mono<Void> delete(int id){
         return driverRepo.findById(id)
             .flatMap(driverRepo::delete);
