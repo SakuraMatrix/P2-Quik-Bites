@@ -11,31 +11,4 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface DriverRepository extends ReactiveCassandraRepository<Driver, Integer>{
 
-
-    //private CqlSession session;
-//
-    //public DriverRepository(CqlSession session){this.session = session;}
-//
-//
-    //public Flux<Driver> getAll(){
-    //    return Flux.from(session.executeReactive("SELECT * FROM quikbites.drivers"))
-    //            .map(row->new Driver(row.getInt("id"), row.getString("name")));
-    //}
-//
-    //public Mono<Driver> get(String id){
-    //    return Mono.from(session.executeReactive("SELECT * FROM quikbites.drivers WHERE id = " +id))
-    //            .map(row -> new Driver(row.getInt("id"), row.getString("name")));
-    //}
-//
-    //public Mono<Driver> get(int id){
-    //    return Mono.from(session.executeReactive("SELECT * FROM quikbites.drivers WHERE id = " +id))
-    //            .map(row -> new Driver(row.getInt("id"), row.getString("name")));
-    //}
-//
-    //public Driver create(Driver driver){
-    //    SimpleStatement statement = SimpleStatement.builder("INSERT INTO quikbites.drivers (id, name) values (?, ?)")
-    //            .addPositionalValues(driver.getId(), driver.getName()).build();
-    //    Flux.from(session.executeReactive(statement)).subscribe();
-    //    return driver;
-    //}
 }

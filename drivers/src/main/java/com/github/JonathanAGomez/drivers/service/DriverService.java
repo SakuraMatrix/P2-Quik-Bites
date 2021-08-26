@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
+
 @Service
 public class DriverService {
     //Check this var because the Bean dependency for service failed
@@ -19,7 +21,11 @@ public class DriverService {
 
     public Mono<Driver> create(Driver driver){return driverRepo.save(driver);}
 
-    public void delete(Driver driver){ driverRepo.delete(driver);}
+    //Delete builds the cql statement, but my syntax is off. figure out what makes it work
+    public Mono<Void> delete(int id){
+        return driverRepo.findById(id)
+            .flatMap(driverRepo::delete);
+    }
 
     public String printData(){return "This is an error message";}
 }
