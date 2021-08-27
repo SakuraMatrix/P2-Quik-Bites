@@ -21,6 +21,9 @@ public class DriverService {
 
     public Mono<Driver> create(Driver driver){return driverRepo.save(driver);}
 
+    public Mono<Driver> getLocation(int id){ return get(id);}
+
+
     public Mono<Void> delete(int id){
         return driverRepo.findById(id)
             .flatMap(driverRepo::delete);

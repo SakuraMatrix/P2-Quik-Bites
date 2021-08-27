@@ -3,6 +3,7 @@ package com.github.JonathanAGomez.drivers.controller;
 import com.github.JonathanAGomez.drivers.domain.Driver;
 import com.github.JonathanAGomez.drivers.service.DriverService;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -19,8 +20,22 @@ public class DriverController {
     @GetMapping("/error")
     public String getError(){return driverService.printData();}
 
-    @GetMapping("/{id}")
-    public Mono<Driver> get(@PathVariable("id") int id){return driverService.get(id);}
+    @GetMapping("/info/{id}")
+    public Mono<Driver> getInfo(@PathVariable("id") int id){return driverService.get(id);}
+
+    @GetMapping("/id/{id}")
+    public Integer getId(@PathVariable("id") int id){
+        Driver temp = new Driver();
+        driverService.getLocation(id).subscribe(value -> temp.setDriver_id(value.getDriver_id()));
+        return temp.getDriver_id();
+    }
+
+    @GetMapping("/loc/{id}")
+    public String getLocation(@PathVariable("id") int id){
+        Driver temp = new Driver();
+        driverService.getLocation(id).subscribe(value -> temp.setLocation(value.getLocation()));
+        return temp.getLocation();
+    }
 
     @PostMapping("")
     public Mono<Driver> create(@RequestBody Driver driver){return driverService.create(driver);}

@@ -9,8 +9,9 @@ public class Driver {
     @PrimaryKey
     private int driver_id;
     private String driver_name;
-    //private double latitude;
-    //private double longitude;
+    private String location;
+    private String customer_Address;
+    private String restaurant_Address;
 
     public Driver(){
 
@@ -27,9 +28,12 @@ public class Driver {
     public String getDriver_name(){return driver_name;}
     public void setDriver_name(String driver_name){this.driver_name = driver_name;}
 
-    //public double getLatitude(){return this.latitude;}
-    //public void setLatitude(double latitude){this.latitude = latitude;}
+    public String getLocation(){return location;}
+    public void setLocation(String location){this.location = location;}
 
-    //public double getLongitude(){return  this.longitude;}
-    //public void setLongitude(double longitude){this.longitude = longitude;}
+    public String getCustomer_Address(){return driver_name;}
+    public void setCustomer_Address(String customer_Address){this.customer_Address = customer_Address;}
+
+    public String getRestaurant_Address(){return driver_name;}
+    public void setRestaurant_Address(String restaurant_Address){this.restaurant_Address = restaurant_Address;}
 }
