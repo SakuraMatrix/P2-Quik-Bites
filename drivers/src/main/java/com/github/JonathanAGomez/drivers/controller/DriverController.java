@@ -2,10 +2,15 @@ package com.github.JonathanAGomez.drivers.controller;
 
 import com.github.JonathanAGomez.drivers.domain.Driver;
 import com.github.JonathanAGomez.drivers.service.DriverService;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.CoreSubscriber;
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.function.Consumer;
 
 @RestController
 @RequestMapping(value ="/driver")
@@ -26,7 +31,31 @@ public class DriverController {
     @GetMapping("/id/{id}")
     public Integer getId(@PathVariable("id") int id){
         Driver temp = new Driver();
-        driverService.getLocation(id).subscribe(value -> temp.setDriver_id(value.getDriver_id()));
+        Subscriber<Driver> sub = new Subscriber<Driver>() {
+            Subscription subscription;
+            @Override
+            public void onSubscribe(Subscription sub) {
+            this.subscription = sub;
+            subscription.request(1);
+            System.out.println("OnSubscribe Called");
+            }
+
+            @Override
+            public void onNext(Driver driver) {
+                temp.setDriver_id(driver.getDriver_id());
+                temp.setDriver_name(driver.getDriver_name());
+                System.out.println("OnNext Called for "+temp.getDriver_name()+" ID: "+temp.getDriver_id());
+            }
+            @Override
+            public void onError(Throwable throwable) {
+            }
+            @Override
+            public void onComplete() {
+            }
+        };
+        driverService.get(id).subscribe(sub);
+        System.out.print(temp.getDriver_name() + ": ");
+        System.out.println(temp.getDriver_id());
         return temp.getDriver_id();
     }
 
