@@ -5,12 +5,8 @@ import com.github.JonathanAGomez.drivers.service.DriverService;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.CoreSubscriber;
-import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.function.Consumer;
 
 @RestController
 @RequestMapping(value ="/driver")
@@ -28,14 +24,16 @@ public class DriverController {
     @GetMapping("/info/{id}")
     public Mono<Driver> getInfo(@PathVariable("id") int id){return driverService.get(id);}
 
+    /*
+    //Return to this if you can figure it out
     @GetMapping("/id/{id}")
     public Integer getId(@PathVariable("id") int id){
         Driver temp = new Driver();
         Subscriber<Driver> sub = new Subscriber<Driver>() {
-            Subscription subscription;
+        Subscription subscription;
             @Override
             public void onSubscribe(Subscription sub) {
-            this.subscription = sub;
+            subscription = sub;
             subscription.request(1);
             System.out.println("OnSubscribe Called");
             }
@@ -44,7 +42,7 @@ public class DriverController {
             public void onNext(Driver driver) {
                 temp.setDriver_id(driver.getDriver_id());
                 temp.setDriver_name(driver.getDriver_name());
-                System.out.println("OnNext Called for "+temp.getDriver_name()+" ID: "+temp.getDriver_id());
+                System.out.println("OnNext Called for "+ temp.getDriver_name()+" ID: "+ temp.getDriver_id());
             }
             @Override
             public void onError(Throwable throwable) {
@@ -56,9 +54,11 @@ public class DriverController {
         driverService.get(id).subscribe(sub);
         System.out.print(temp.getDriver_name() + ": ");
         System.out.println(temp.getDriver_id());
+
         return temp.getDriver_id();
     }
 
+    //Return to this if you can figure it out
     @GetMapping("/loc/{id}")
     public String getLocation(@PathVariable("id") int id){
         Driver temp = new Driver();
@@ -66,9 +66,13 @@ public class DriverController {
         return temp.getLocation();
     }
 
+     */
+
     @PostMapping("")
     public Mono<Driver> create(@RequestBody Driver driver){return driverService.create(driver);}
 
     @DeleteMapping("/delete/{id}")
-    public Mono<Void> delete(@PathVariable("id") int id){return driverService.delete(id);}
+    public Mono<Void> delete(@PathVariable("id") int id){
+        return driverService.delete(id);
+    }
 }

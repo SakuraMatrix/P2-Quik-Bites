@@ -10,8 +10,8 @@ public class Driver {
     private int driver_id;
     private String driver_name;
     private String location;
-    private String customer_Address;
-    private String restaurant_Address;
+    private String cust_location;
+    private String rest_location;
 
     public Driver(){
 
@@ -31,9 +31,9 @@ public class Driver {
     public String getLocation(){return location;}
     public void setLocation(String location){this.location = location;}
 
-    public String getCustomer_Address(){return driver_name;}
-    public void setCustomer_Address(String customer_Address){this.customer_Address = customer_Address;}
+    public String getCust_location(){return driver_name;}
+    public void setCust_location(String cust_location){this.cust_location = cust_location;}
 
-    public String getRestaurant_Address(){return driver_name;}
-    public void setRestaurant_Address(String restaurant_Address){this.restaurant_Address = restaurant_Address;}
+    public String getRest_location(){return driver_name;}
+    public void setRest_location(String rest_location){this.rest_location = rest_location;}
 }
