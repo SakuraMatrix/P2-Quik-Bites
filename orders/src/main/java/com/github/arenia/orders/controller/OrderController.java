@@ -23,9 +23,6 @@ public class OrderController {
     @GetMapping("")
     public Flux<Order> getAll(){return orderService.getAll();}
 
-    @GetMapping("/error")
-    public String getError(){return orderService.printData();}
-
     @GetMapping("/{id}")
     public Mono<Order> get(@PathVariable("id") int id){return orderService.get(id);}
 

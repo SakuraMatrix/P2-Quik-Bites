@@ -8,6 +8,7 @@
 		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>com.github.arenia</groupId>
 	<artifactId>orders</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -53,6 +54,16 @@
 			<artifactId>java-driver-core</artifactId>
 			<version>4.13.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.intuit.karate</groupId>
+			<artifactId>karate-core</artifactId>
+			<version>1.2.0.RC1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.intuit.karate</groupId>
+			<artifactId>karate-junit4</artifactId>
+			<version>1.2.0.RC1</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -74,6 +85,14 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<testResources>
+            <testResource>
+                <directory>src/test/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </testResource>
+        </testResources>
 	</build>
 
 </project>

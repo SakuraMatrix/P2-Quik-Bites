@@ -32,6 +32,5 @@ public class OrderService {
     order.setOrderStatus(status);
     return order;
   }
-  public String printData(){return "This is an error message";}
   
 }
