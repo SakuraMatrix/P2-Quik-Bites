@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(value ="/driver")
+@RequestMapping("")
 public class DriverController {
     private final DriverService driverService;
 
