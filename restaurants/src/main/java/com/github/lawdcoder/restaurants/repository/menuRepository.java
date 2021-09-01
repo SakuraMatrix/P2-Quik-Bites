@@ -9,34 +9,44 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Repository
-public interface menuRepository extends ReactiveCassandraRepository<menu, Integer>{
+public class menuRepository {
+
+    private CqlSession session;
+
+    public menuRepository(CqlSession session){this.session = session;}
+
+    public Flux<menu> getAll() {
+        return Flux.from(session.executeReactive("SELECT * FROM restaurants.menu"))
+                .map(row -> new menu(row.getInt("menuId"),row.getInt("resId"), row.getDouble("price"),row.getString("name"))
+                );
+    }
+
+    public Mono<menu> get(String menuId){
+        return Mono.from(session.executeReactive("SELECT * FROM restaurants.menu WHERE menuId = " +menuId))
+                .map(row -> new menu(row.getInt("menuId"),row.getInt("resId"), row.getDouble("price"),row.getString("name"))
+                );
+    }
+
+    public Mono<menu> getId(int menuId) {
+        return Mono.from(session.executeReactive("SELECT * FROM restaurants.menu WHERE menuId = " +menuId))
+                .map(row -> new menu(row.getInt("menuId"),row.getInt("resId"), row.getDouble("price"),row.getString("name"))
+                );
+    }
+
+    public menu create(menu menu){
+        SimpleStatement statement = SimpleStatement.builder("INSERT INTO restaurants.menu (menuId, resId, price, name) values (?, ?, ?,?)")
+                .addPositionalValues(menu.getMenuId(), menu.getresId(),menu.getPrice(), menu.getName())
+                .build();
+        Flux.from(session.executeReactive(statement)).subscribe();
+        return menu;
+    }
 
 
-    //private CqlSession session;
-//
-    //public DriverRepository(CqlSession session){this.session = session;}
-//
-//
-    //public Flux<Driver> getAll(){
-    //    return Flux.from(session.executeReactive("SELECT * FROM quikbites.drivers"))
-    //            .map(row->new Driver(row.getInt("id"), row.getString("name")));
-    //}
-//
-    //public Mono<Driver> get(String id){
-    //    return Mono.from(session.executeReactive("SELECT * FROM quikbites.drivers WHERE id = " +id))
-    //            .map(row -> new Driver(row.getInt("id"), row.getString("name")));
-    //}
-//
-    //public Mono<Driver> get(int id){
-    //    return Mono.from(session.executeReactive("SELECT * FROM quikbites.drivers WHERE id = " +id))
-    //            .map(row -> new Driver(row.getInt("id"), row.getString("name")));
-    //}
-//
-    //public Driver create(Driver driver){
-    //    SimpleStatement statement = SimpleStatement.builder("INSERT INTO quikbites.drivers (id, name) values (?, ?)")
-    //            .addPositionalValues(driver.getId(), driver.getName()).build();
-    //    Flux.from(session.executeReactive(statement)).subscribe();
-    //    return driver;
-    //}
+    public Mono<menu> delete(menu menu){
+        SimpleStatement statement = SimpleStatement.builder("DELETE FROM restaurants.menu where menuId = ?")
+                .addPositionalValue(menu.getMenuId())
+                .build();
+        Flux.from(session.executeReactive(statement)).subscribe();
+        return Mono.just(menu);
+    }
 }
-

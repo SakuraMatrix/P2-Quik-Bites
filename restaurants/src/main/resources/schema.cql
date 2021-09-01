@@ -1,6 +1,6 @@
-CREATE KEYSPACE IF NOT EXISTS Food_Delivery WITH replication=
+CREATE KEYSPACE IF NOT EXISTS restaurants WITH replication=
 {'class': 'SimpleStrategy','replication_factor':1};
-use Food_Delivery;
+use restaurant;
 CREATE TABLE IF NOT EXISTS restaurants(
 restaurantId int,
 name text,
@@ -10,7 +10,9 @@ PRIMARY KEY(restaurantId, name)
 
 CREATE TABLE menu(
 menuId int,
+resId int,
+price double,
 name text,
-price,
-PRIMARY KEY(menuId, name)
+PRIMARY KEY(menuId, resId)
 );
+

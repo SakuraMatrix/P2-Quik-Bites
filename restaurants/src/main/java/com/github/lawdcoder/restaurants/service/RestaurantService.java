@@ -15,7 +15,7 @@ public class RestaurantService {
 
     public Flux<restaurant> getAll(){return restaurantRepo.findAll();}
 
-    public Mono<restaurant> get(int id){return restaurantRepo.findById(id);}
+    public Mono<restaurant> get(int restaurantId){return restaurantRepo.findById(restaurantId);}
 
     public Mono<restaurant> create(restaurant restaurant){return restaurantRepo.save(restaurant);}
 

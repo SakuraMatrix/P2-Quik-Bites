@@ -15,8 +15,8 @@ import java.util.List;
 @EnableReactiveCassandraRepositories
 
 public class CassandraConfig extends AbstractReactiveCassandraConfiguration {
-    String keyspace = "restaurant";
-    String keyspace1 = "menu";
+    String keyspace = "restaurants";
+  // String keyspace1 = "menu";
 
 
     @Override

@@ -10,16 +10,14 @@ public class restaurant {
     @PrimaryKey
     private int restaurantId;
     private String name;
-
     private String location;
 
     public restaurant(int restaurantId, String name, String location)
     {
         this.restaurantId=restaurantId;
         this.location=location;
-
-
         this.name=name;
+        ;
 
     }
     public restaurant()
@@ -35,11 +33,16 @@ public class restaurant {
     public String getLocation() {
         return location;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
     @Override
     public String toString()
     {
         return "restaurant{" +"resturantId=" + restaurantId+ ",location="
-                +location+"}";
+                +location+ " }";
     }
 
 
@@ -48,7 +51,9 @@ public class restaurant {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         restaurant that = (restaurant) o;
-        return restaurantId == that.restaurantId  && Objects.equals(name, that.name)  && Objects.equals(location, that.location);
+        return restaurantId == that.restaurantId  && Objects.equals(name, that.name)
+                && Objects.equals(location, that.location);
+
     }
 
     @Override
