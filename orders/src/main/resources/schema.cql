@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS quikeats.orders (
     driverId int,
     resturantId int,
     total double,
-    orderStatus text
+    orderStatus text,
+    orderItems map<int, int>
 );

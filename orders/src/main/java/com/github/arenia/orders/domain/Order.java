@@ -3,6 +3,8 @@ package com.github.arenia.orders.domain;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
+import java.util.Map;
+
 @Table("orders")
 public class Order {
     
@@ -13,6 +15,7 @@ public class Order {
     private int resturantId;
     private double total;
     private String orderStatus;
+    private Map<Integer, Integer> orderItems;
 
     /**
      * @param orderId
@@ -22,13 +25,14 @@ public class Order {
      * @param total
      * @param orderStatus
      */
-    public Order(int orderId, int customerId, int driverId, int resturantId, double total, String orderStatus) {
+    public Order(int orderId, int customerId, int driverId, int resturantId, double total, String orderStatus, Map<Integer, Integer> orderItems) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.driverId = driverId;
         this.resturantId = resturantId;
         this.total = total;
         this.orderStatus = orderStatus;
+        this.orderItems = orderItems;
     }
 
     public Order(){
@@ -106,7 +110,21 @@ public class Order {
      */
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
-    }   
+    }
+
+    /**
+     * @return the orderItems
+     */
+    public Map<Integer, Integer> getOrderItems() {
+        return orderItems;
+    }
+
+    /**
+     * @param orderItems the orderItems to set
+     */
+    public void setOrderItems(Map<Integer, Integer> orderItems) {
+        this.orderItems = orderItems;
+    }
 
     /* (non-Javadoc)
      * @see java.lang.Object#hashCode()
@@ -119,6 +137,7 @@ public class Order {
         result = prime * result + customerId;
         result = prime * result + driverId;
         result = prime * result + orderId;
+        result = prime * result + ((orderItems == null) ? 0 : orderItems.hashCode());
         result = prime * result + ((orderStatus == null) ? 0 : orderStatus.hashCode());
         result = prime * result + resturantId;
         long temp;
@@ -126,10 +145,47 @@ public class Order {
         result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
     
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Order other = (Order) obj;
+        if (customerId != other.customerId)
+            return false;
+        if (driverId != other.driverId)
+            return false;
+        if (orderId != other.orderId)
+            return false;
+        if (orderItems == null) {
+            if (other.orderItems != null)
+                return false;
+        } else if (!orderItems.equals(other.orderItems))
+            return false;
+        if (orderStatus == null) {
+            if (other.orderStatus != null)
+                return false;
+        } else if (!orderStatus.equals(other.orderStatus))
+            return false;
+        if (resturantId != other.resturantId)
+            return false;
+        if (Double.doubleToLongBits(total) != Double.doubleToLongBits(other.total))
+            return false;
+        return true;
+    }
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
+    
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -139,6 +195,8 @@ public class Order {
         builder.append(driverId);
         builder.append(", orderId=");
         builder.append(orderId);
+        builder.append(", orderItems=");
+        builder.append(orderItems);
         builder.append(", orderStatus=");
         builder.append(orderStatus);
         builder.append(", resturantId=");
@@ -147,48 +205,6 @@ public class Order {
         builder.append(total);
         builder.append("]");
         return builder.toString();
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Order other = (Order) obj;
-        if (customerId != other.customerId) {
-            return false;
-        }
-        if (driverId != other.driverId) {
-            return false;
-        }
-        if (orderId != other.orderId) {
-            return false;
-        }
-        if (orderStatus == null) {
-            if (other.orderStatus != null) {
-                return false;
-            }
-        } else if (!orderStatus.equals(other.orderStatus)) {
-            return false;
-        }
-        if (resturantId != other.resturantId) {
-            return false;
-        }
-        if (Double.doubleToLongBits(total) != Double.doubleToLongBits(other.total)) {
-            return false;
-        }
-        return true;
-    }
-
-    
+    }   
 
 }

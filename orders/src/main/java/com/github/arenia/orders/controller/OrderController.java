@@ -2,8 +2,6 @@ package com.github.arenia.orders.controller;
 
 import com.github.arenia.orders.domain.Order;
 import com.github.arenia.orders.service.OrderService;
-import com.github.arenia.orders.OrderApplication;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,26 +29,12 @@ public class OrderController {
     @GetMapping("/{id}")
     public Mono<Order> get(@PathVariable("id") int id){return orderService.get(id);}
 
+    @GetMapping("/{id}/{status}")
+    public Mono<Order> updateStatus(@PathVariable("id") int id, @PathVariable("status") String status){return orderService.updateStatus(id, status);}
+
     @PostMapping("")
-    public Mono<Order> create(@RequestBody Order order){
-    OrderApplication.orderMap.put(order.getOrderId(), order);
-    OrderApplication.orderMap.get(order.getOrderId()).setOrderStatus("Placed");
-    return orderService.create(order);}
-
-    @GetMapping("/status/Ready/{id}")
-    public Mono<Order> statusReady(@PathVariable("id") int id){
-    OrderApplication.orderMap.get(id).setOrderStatus("Ready");
-    return orderService.create(OrderApplication.orderMap.get(id));
-    }
-
-    @GetMapping("/status/Delivered/{id}")
-    public Mono<Order> statusDelivered(@PathVariable("id") int id){
-    OrderApplication.orderMap.get(id).setOrderStatus("Delivered");
-    return orderService.create(OrderApplication.orderMap.get(id));
-    }
+    public Mono<Order> create(@RequestBody Order order){return orderService.create(order);}
 
     @DeleteMapping("/delete/{id}")
-    public Mono<Void> delete(@PathVariable("id") Integer id){
-    OrderApplication.orderMap.remove(id);
-    return orderService.delete(id);}
+    public Mono<Void> delete(@PathVariable("id") Integer id){return orderService.delete(id);}
 }
