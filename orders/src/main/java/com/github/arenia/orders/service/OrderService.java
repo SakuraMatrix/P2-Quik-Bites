@@ -22,6 +22,16 @@ public class OrderService {
   public Mono<Void> delete(Integer id){ return orderRepository.findById(id).
     flatMap(orderRepository::delete);}
 
+  public Mono<Order> updateStatus(int id, String status){
+    return orderRepository.findById(id)
+      .map(order -> setStatus(order, status))
+      .flatMap(orderRepository::save);
+  }
+
+  public Order setStatus(Order order, String status){
+    order.setOrderStatus(status);
+    return order;
+  }
   public String printData(){return "This is an error message";}
   
 }

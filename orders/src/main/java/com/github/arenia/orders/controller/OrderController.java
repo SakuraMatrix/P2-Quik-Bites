@@ -29,6 +29,9 @@ public class OrderController {
     @GetMapping("/{id}")
     public Mono<Order> get(@PathVariable("id") int id){return orderService.get(id);}
 
+    @GetMapping("/{id}/{status}")
+    public Mono<Order> updateStatus(@PathVariable("id") int id, @PathVariable("status") String status){return orderService.updateStatus(id, status);}
+
     @PostMapping("")
     public Mono<Order> create(@RequestBody Order order){return orderService.create(order);}
 
