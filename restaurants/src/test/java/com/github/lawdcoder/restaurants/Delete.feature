@@ -1,8 +1,9 @@
 Feature: Delete test
 
   Background:
-    * url 'https://reqres.in/api'
-    * header Accept = 'application/json'
+
+  *url 'https://regres.in/api'
+  *header Accept ='application/json'
 
     Scenario: Delete Testing
       Given path '/users/2'
