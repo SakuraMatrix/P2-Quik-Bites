@@ -10,9 +10,9 @@ public class Driver {
     private int driver_id;
     private String driver_name;
     //No longer used
-    //private String location;
-    //private String cust_location;
-    //private String rest_location;
+    private String location;
+    private String cust_location;
+    private String rest_location;
 
     public Driver(){
 
