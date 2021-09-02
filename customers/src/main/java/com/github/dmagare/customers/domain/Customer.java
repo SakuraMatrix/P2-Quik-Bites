@@ -1,6 +1,12 @@
 package com.github.dmagare.customers.domain;
 
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
+
+@Table("customers")
 public class Customer {
+	
+	@PrimaryKey
     private int customerID;
     private String firstName;
     private String lastName;

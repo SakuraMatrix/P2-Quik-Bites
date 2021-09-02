@@ -5,7 +5,7 @@ import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.util.Objects;
 
-@Table("restaurant")
+@Table("restaurants")
 public class restaurant {
     @PrimaryKey
     private int restaurantId;

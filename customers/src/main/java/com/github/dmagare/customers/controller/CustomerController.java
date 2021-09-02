@@ -22,7 +22,7 @@ public class CustomerController {
         public String getError() {
         return customerService.printData();
     }
-    @GetMapping("/customerId")
+    @GetMapping("/{customerId}")
     public Mono<Customer> get(@PathVariable("customerId") int customerId){
         return customerService.get(customerId);
     }
