@@ -3,7 +3,7 @@ package com.github.dmagare.customers.domain;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
-@Table("customers")
+@Table("customer_table")
 public class Customer {
 	
 	@PrimaryKey
