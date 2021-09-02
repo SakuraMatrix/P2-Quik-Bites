@@ -9,10 +9,10 @@ public class Driver {
     @PrimaryKey
     private int driver_id;
     private String driver_name;
-    private String location;
     //No longer used
-    private String cust_location;
-    private String rest_location;
+    //private String location;
+    //private String cust_location;
+    //private String rest_location;
 
     public Driver(){
 
@@ -30,12 +30,12 @@ public class Driver {
     public void setDriver_name(String driver_name){this.driver_name = driver_name;}
 
     //No longer used
-    public String getLocation(){return location;}
-    public void setLocation(String location){this.location = location;}
+    //public String getLocation(){return location;}
+    //public void setLocation(String location){this.location = location;}
 
-    public String getCust_location(){return driver_name;}
-    public void setCust_location(String cust_location){this.cust_location = cust_location;}
+    //public String getCust_location(){return driver_name;}
+    //public void setCust_location(String cust_location){this.cust_location = cust_location;}
 
-    public String getRest_location(){return driver_name;}
-    public void setRest_location(String rest_location){this.rest_location = rest_location;}
+    //public String getRest_location(){return driver_name;}
+    //public void setRest_location(String rest_location){this.rest_location = rest_location;}
 }
