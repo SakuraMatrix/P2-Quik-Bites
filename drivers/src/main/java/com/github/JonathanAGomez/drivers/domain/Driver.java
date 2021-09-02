@@ -10,6 +10,7 @@ public class Driver {
     private int driver_id;
     private String driver_name;
     private String location;
+    //No longer used
     private String cust_location;
     private String rest_location;
 
@@ -28,6 +29,7 @@ public class Driver {
     public String getDriver_name(){return driver_name;}
     public void setDriver_name(String driver_name){this.driver_name = driver_name;}
 
+    //No longer used
     public String getLocation(){return location;}
     public void setLocation(String location){this.location = location;}
 
