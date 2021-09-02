@@ -7,13 +7,6 @@ spring:
             discovery:
                 locator:
                     enabled: true
-            routes:
-              - id: orders
-                uri: lb://orders
-                predicates:
-                    - Path=/orders/**
-                filters:
-                    - RewritePath=/orders/(?<segment>.*), /$\{segment}
     application:
         name: gateway
 ---
