@@ -6,7 +6,7 @@ You can place an order as a customer, prepare the meal as the restaurant, or del
 
 > ## Users can:
 
-> ## Route 
+> Route 
   > - Route between restaurant and customer
 > Post 
   > - Users can order as a customer for a specific restaurant
@@ -17,10 +17,38 @@ You can place an order as a customer, prepare the meal as the restaurant, or del
 
 
 > ## Technologies:
-> - Eureka
-> - Cassandra
+> - Eureka Discovery Services
+> - Cassandra CQL Database
 > - Java
 > - Maven
 > - Springboot
 > - Webflux
+> - Karate testing
+> - Spring Cloud Gateway
+
+> ## Microservices
+> - Customer Domain
+> - Restaurant Domain
+> - Orders Domain
+> - Driver Domain
+
+> ## Challenges Faced
+> - Time constraint
+> - Overscoping
+> - Intergrating Google Maps
+> GitHub complications
+> Team coordination
+
+> ## Future enhancement
+> - Implementing payment system
+> - Implementing Google maps API
+> - Mobile App (multifaced)
+
+> ## Team Members
+> -Tyler Bagala
+> -Jonathan Gomez
+> -David Magare
+> -Lawrence Agboifoh
+> -Terry Light
+
 
