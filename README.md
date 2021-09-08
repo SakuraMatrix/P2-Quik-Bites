@@ -12,11 +12,11 @@ You can place an order as a customer, prepare the meal as the restaurant, or del
 ##### Deliver an order as a driver
 
 
-## Technologies:
+> ## Technologies:
 > - Eureka
-##### Cassandra
-##### Java
-##### Maven
-##### Springboot
-##### Webflux
+> - Cassandra
+> - Java
+> - Maven
+> - Springboot
+> - Webflux
 
