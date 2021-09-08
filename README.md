@@ -7,7 +7,7 @@ You can place an order as a customer, prepare the meal as the restaurant, or del
 > ## Uses:
 
   > - Users can route between restaurant and customer
-  > - Users can order as a customer for a specific restaurant
+  > - Users can order as a customer from a specific restaurant
   > - Users can mark an order as prepared from the restaurant frontend
   > - Users can deliver order as a driver
 
