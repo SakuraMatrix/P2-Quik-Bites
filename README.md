@@ -1,6 +1,6 @@
 # P2-Quik-Bites
 **User Story**.
-#Users can:
+# Users can:
 
 Route between restaurant and customer
 Post an order as a customer for a specific restaurant
