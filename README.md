@@ -6,7 +6,7 @@ You can place an order as a customer, prepare the meal as the restaurant, or del
 
 > ## Users can:
 
-> Route 
+> - Route 
   > - Route between restaurant and customer
 > Post 
   > - Users can order as a customer for a specific restaurant
