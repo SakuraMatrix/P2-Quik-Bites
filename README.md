@@ -45,10 +45,10 @@ You can place an order as a customer, prepare the meal as the restaurant, or del
 > - Mobile App (multifaced)
 
 > ## Team Members
-> -Tyler Bagala
-> -Jonathan Gomez
-> -David Magare
-> -Lawrence Agboifoh
-> -Terry Light
+> - Tyler Bagala
+> - Jonathan Gomez
+> - David Magare
+> - Lawrence Agboifoh
+> - Terry Light
 
 
